@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+
+    <title>Home</title>
+
+    <style>
+        .btn {
+            border: 1px solid black;
+            background-color: white;
+            color: black;
+
+        }
+        /* Green */
+        .success {
+            border-color: #4CAF50;
+            color: green;
+        }
+
+        .success:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+        /* Blue */
+        .info {
+            border-color: #2196F3;
+            color: dodgerblue;
+        }
+
+        .info:hover {
+            background: #2196F3;
+            color: white;
+        }
+        /* Red */
+        .danger {
+            border-color: #f44336;
+            color: red;
+        }
+
+        .danger:hover {
+            background: #f44336;
+            color: white;
+        }
+        /* Orange */
+        .warning {
+            border-color: #ff9800;
+            color: orange;
+        }
+
+        .warning:hover {
+            background: #ff9800;
+            color: white;
+        }
+    </style>
+
+</head>
+<body>
+<div style="position: absolute; right: 195px;">
+    <button type="button" class="btn btn-secondary"><a th:href="@{/logout}" style="text-decoration: none; color: #000">Logout</a></button>
+</div>
+
+    <div align="center">
+        <h1 style="color: #cdff00">Games</h1>
+        <button type="button" class="btn success"><a href="new" style="text-decoration: none">Create New Post</a></button>
+        <br/><br/>
+
+        <form th:action="@{/listGames}" method="get">
+            <input id="txtSearch" type="text" placeholder="Search" name="keyword">
+            <button type="submit" class="btn info">Search</button>
+        </form>
+        <br><br/>
+
+            <div class="container">
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Genre</th>
+                        <th>Console</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="game : ${listGames}">
+                        <td th:text="${game.id}">Post ID</td>
+                        <td th:text="${game.name}">Title</td>
+                        <td th:text="${game.genre}">Anons</td>
+                        <td th:text="${game.console}">Made in</td>
+                        <td th:text="${game.price}">Price</td>
+                        <td>
+                            <button type="button" class="btn warning"><a  th:href="@{'/edit/' + ${game.id}}" style="text-decoration: none">Edit</a></button>
+                            &nbsp;&nbsp;&nbsp;
+                            <button type="button" class="btn danger"><a th:href="@{'/delete/' + ${game.id}}" style="text-decoration: none">Delete</a></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

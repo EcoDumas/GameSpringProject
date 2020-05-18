@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<link rel="stylesheet" type="text/css"
+		  th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+<title>Edit Product</title>
+</head>
+<body>
+	<div align="center">
+		<h1>Edit Game</h1>
+		<br />
+		<form action="#" th:action="@{/save}" th:object="${game}"
+			method="post">
+
+			<table class="table" style="width: 40%">
+				<tr>				
+					<td>Post ID:</td>
+					<td>
+						<input type="text" class="form-control" style="width: 180px" th:field="*{id}" readonly="readonly" />
+					</td>
+				</tr>			
+				<tr>				
+					<td>Name:</td>
+					<td>
+						<input type="text" class="form-control" style="width: 180px" th:field="*{name}" />
+					</td>
+				</tr>
+				<tr>
+					<td>Genre:</td>
+					<td><input type="text" class="form-control" style="width: 180px" th:field="*{genre}" /></td>
+				</tr>
+				<tr>
+					<td>Console:</td>
+					<td><input type="text" class="form-control" style="width: 180px" th:field="*{console}" /></td>
+				</tr>
+				<tr>
+					<td>Price:</td>
+					<td><input type="text" class="form-control" style="width: 180px" th:field="*{price}" /></td>
+				</tr>								
+				<tr>
+					<td colspan="2"><button type="submit" class="btn btn-success">Save</button> </td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>
